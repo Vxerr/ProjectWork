@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <!-- Titolo della pagina visualizzato nella scheda del browser -->
+    <title>Prenotazioni EVDrive</title>
+
+    <!-- Collegamento al file CSS per lo stile della pagina -->
+    <link rel="stylesheet" type="text/css" href="/static/style.css" />
+
+    <!-- Collegamento al font 'Roboto' da Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <!-- Collegamento al file JavaScript che verrà eseguito dopo il caricamento della pagina -->
+    <script src="/static/script.js" defer></script>
+  </head>
+
+  <body>
+
+    <!-- Contenitore principale che racchiude il calendario e il form di prenotazione -->
+    <div class="container">
+
+      <!-- Sezione del calendario -->
+      <div class="calendar">
+
+        <!-- Intestazione del calendario con le frecce per navigare tra i mesi -->
+        <header>
+          <pre class="left">◀</pre> <!-- Freccia per il mese precedente -->
+          <div class="header-display">
+            <p class="display">""</p> <!-- Visualizzazione del mese e dell'anno -->
+          </div>
+          <pre class="right">▶</pre> <!-- Freccia per il mese successivo -->
+        </header>
+
+        <!-- Sezione dei giorni della settimana -->
+        <div class="week">
+          <div>Dom</div>
+          <div>Lun</div>
+          <div>Mar</div>
+          <div>Mer</div>
+          <div>Gio</div>
+          <div>Ven</div>
+          <div>Sab</div>
+        </div>
+
+        <!-- Sezione dei giorni del mese -->
+        <div class="days"></div>
+      </div>
+
+      <!-- Sezione per visualizzare la data selezionata e pulsanti-->
+      <div class="display-selected">
+
+        <!-- Paragrafo che mostra la data selezionata -->
+        <p class="selected"></p>
+
+        <!-- Pulsante per modificare una prenotazione (inizialmente nascosto) -->
+        <button id="modifica" hidden="true" type="button">Modifica</button>
+
+        <!-- Pulsante per cancellare una prenotazione (inizialmente nascosto) -->
+        <button id="cancella" hidden="true" type="button">Cancella</button>
+
+         <!-- Pulsante per aprire il form di prenotazione (inizialmente nascosto) -->
+        <button id="openForm" hidden="true" type="button">Prenota</button>
+
+         <!-- Sfondo semi-trasparente per il form di prenotazione (inizialmente nascosto) -->
+        <div id="form" class="booking-form-backdrop">
+
+          <!-- Sezione del form di prenotazione -->
+          <div class="booking-form">
+
+            <!-- Form di prenotazione con metodo POST per inviare i dati -->
+            <form action="/write_database" method="POST" id="userinfo">
+
+              <!-- Campo per il nome e cognome -->
+              <label for="nome">Nome e cognome:</label><br>
+              <input type="text" id="name" name="nome" required><br>
+
+              <!-- Campo per il numero di telefono -->
+              <label for="tel">Numero di telefono:</label><br>
+              <input type="tel" id="tel" name="telefono" pattern="[0-9]{10}" required><br>
+
+              <!-- Campo per l'indirizzo email -->
+              <label for="email">E-Mail:</label><br>
+              <input type="email" id="email" name="email" required>
+
+              <!-- Pulsante per annullare la prenotazione e chiudere il form  -->
+              <input type="button" id="closeForm" name="closeForm" value="Annulla">
+
+              <!-- Pulsante per confermare la prenotazione e chiudere il form (inizialmente disattivato, diventa attivo se i dati inseriti sono validi)  -->
+              <input type="submit" id="sendForm" name="sendForm" value="Prenota" disabled="true">
+            </form>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </body>
+</html>

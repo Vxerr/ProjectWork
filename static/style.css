@@ -1,0 +1,224 @@
+/* Importa il font 'Roboto' da Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* Definizione variabili per colori comuni */
+:root {
+    --white: #fff; /* Bianco */
+    --accent: #aac90c; /* Verde */
+    --accent-2: #ebedf0; /* Grigio */
+  }
+
+  /* Applica il font Roboto a tutti gli elementi */
+  *{
+    font-family: 'Roboto', sans-serif;
+  }
+
+  /* Stile del corpo della pagina */
+  body {
+    background-color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Stile del contenitore principale */
+  .container {
+    display: inline-block;
+    background-color: var(--white);
+    border-radius: 35px;
+    padding: 0 1em;
+    margin-top: 2em;
+  }
+
+  /* Stile dell'intestazione*/
+  header {
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+
+  /* Stile contenitore mese e anno */
+  .header-display {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Stile mese e anno */
+  .header-display p {
+    color: var(--accent);
+    margin: 5px;
+    font-size: 1.5rem;
+    word-spacing: 0.5rem;
+  }
+
+  /* Stile tag <pre> (freccie direzionali) */
+  pre {
+    padding: 10px;
+    margin: 0;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--accent);
+  }
+
+  /* Stile per i contenitori dei giorni e della settimana */
+  .days,
+  .week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 colonne per ogni giorno della settimana */
+    margin: auto;
+    padding: 0 20px;
+    justify-content: space-between;
+  }
+
+  /* Stile per i nomi dei giorni settimanali e per i giorni mensili */
+  .week div,
+  .days div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3em;
+    width: 3em;
+    margin-bottom: 10px; 
+  }
+
+  /* Stile per i giorni selezionabili (no giorni non validi o già selezionati) */
+  .days div:not(.invalid-day):not(.selection-start):not(.selected-range):not(.selection-end):not(.selected-day):not(.booked-day):hover {
+    background: var(--accent-2);
+    color: var(--accent);
+    cursor: pointer;
+    border-radius: 100%;
+    
+  }
+
+  /* Opacità ridotta per i nomi dei giorni della settimana */
+  .week div {
+    opacity: 0.75;
+  }
+
+  /* Opacità ridotta per i giorni non validi (es. giorni del mese precedente/successivo) */
+  .invalid-day {
+    opacity: 0.25;
+  }
+
+  /* Stile se viene selezionato un solo giorno */
+  .selected-day {
+    background: var(--accent);
+    border-radius: 100%;
+  }
+
+  /* Stile per il primo giorno di un intervallo di selezione */
+  .selection-start {
+    background: var(--accent);
+    border-radius: 100% 0% 0% 100%;
+  }
+
+  /* Stile per i giorni all'interno di un intervallo di selezione */
+  .selected-range {
+    background: var(--accent);
+    border-radius: 0%;
+  }
+
+  /* Stile per l'ultimo giorno di un intervallo di selezione */
+  .selection-end {
+    background: var(--accent);
+    border-radius: 0% 100% 100% 0%;
+  }
+
+  /* Stile per i giorni non validi all'interno di un intervallo di selezione (es. seleziono ultimo giorno di un mese, se passo al mese successivo il giorno del mese precedemte diventa "invalido" e usa questo stile */
+  .invalid-day.selected-range {
+    background: var(--accent);
+    opacity: 0.25;
+  }
+
+  /* Stile per la visualizzazione della data corrispondente al giorno selezionato (o range di date) */
+  .display-selected {
+    margin-bottom: 10px;
+    padding: 20px 20px;
+    text-align: center;
+  }
+
+  /* Stile per i giorni prenotati */
+  .booked-day {
+    color: var(--accent);
+    font-weight: bolder;
+  }
+
+  /* Disabilita l'interazione con gli elementi, usato per impedire l'interazione con il calendario dopo aver prenotato */
+  .block {
+    pointer-events: none;
+  }
+  
+  /* Stile per i pulsanti (apri form di prenotazione, modifica prenotazione, cancella prenotazione, chiudi form di prenotazione) */
+  #openForm, #modifica, #cancella, #closeForm, #sendForm  {
+    border-radius: 35px;
+    background-color: var(--accent);
+    border: none;
+    padding: 15px 30px;
+    color: var(--white);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition-duration: 0.4s;
+  }
+
+  /* Effetto hover per i pulsanti */
+  #openForm:hover, #modifica:hover, #cancella:hover, #closeForm:hover, #sendForm:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Effetto quando si fa clic sui pulsanti */
+  #openForm:active, #modifica:active, #cancella:active, #closeForm:active, #sendForm:active{
+    background-color: #a1be10;
+    transform: translateY(2px);
+  }
+
+  /* Stile per il pulsante di invio form in stato disattivato */
+  #sendForm:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  /* Stile per il form di prenotazione */
+  .booking-form {
+    display: inline-block;
+    width: 21em;
+    background-color: var(--white);
+    border-radius: 35px;
+    padding: 1em;
+    margin-top: 3em;
+  }
+
+  /* Stile per lo sfondo del form di prenotazione, che impedisce di interagire con il calendario mentre il form è aperto */
+  .booking-form-backdrop {
+    position: fixed;
+    justify-content: center;
+    top: 0px;
+    left: 0px;
+    z-index: 999;
+    height: 100%;
+    width: 100%;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  /* Classe per mostrare il form */
+  .show {
+    display: block;
+  }
+
+  /* Stile per i campi del form (nome e cognome, telefono, email) */
+  input[type=text], [type=tel], [type=email] {
+    width: 21em;
+    margin-top: 0.5em;
+    margin-bottom: 2em;
+    border: none;
+    border-bottom: 2px solid;
+  }
+
+  /* Stile per i campi del form quando sono attivi o validi */
+  input[type=text]:focus, [type=tel]:focus, [type=email]:focus,
+  input[type=text]:valid, [type=tel]:valid, [type=email]:valid {
+    outline: none;
+    border-color: var(--accent);
+  }
