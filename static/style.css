@@ -1,5 +1,6 @@
-/* Importa il font 'Roboto' da Google Fonts */
+/* Importa i font 'Roboto' e 'Audiowide' da Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 
 /* Definizione variabili per colori comuni */
 :root {
@@ -16,9 +17,21 @@
   /* Stile del corpo della pagina */
   body {
     background-color: var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+    margin: 0;
+  }
+
+  /* Stile del banner EVDrive */
+  .banner {
+    font-family: 'Audiowide', cursive;
+    font-size: 2.5rem;
+    letter-spacing: -4px;
+    width: 100%;
+    background-color: var(--white);
+    color: var(--accent);
+    padding: 10px 0;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   }
 
   /* Stile del contenitore principale */
@@ -28,6 +41,9 @@
     border-radius: 35px;
     padding: 0 1em;
     margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   }
 
   /* Stile dell'intestazione*/
@@ -186,7 +202,7 @@
     background-color: var(--white);
     border-radius: 35px;
     padding: 1em;
-    margin-top: 3em;
+    margin-top: 7em;
   }
 
   /* Stile per lo sfondo del form di prenotazione, che impedisce di interagire con il calendario mentre il form è aperto */
@@ -207,7 +223,7 @@
     display: block;
   }
 
-  /* Stile per i campi del form (nome e cognome, telefono, email) */
+  /* Stile per i campi del form (nome, telefono, email) */
   input[type=text], [type=tel], [type=email] {
     width: 21em;
     margin-top: 0.5em;
@@ -216,8 +232,12 @@
     border-bottom: 2px solid;
   }
 
-  /* Stile per i campi del form quando sono attivi o validi */
-  input[type=text]:focus, [type=tel]:focus, [type=email]:focus,
+  /* Stile per i campi del form quando sono attivi */
+  input[type=text]:focus, [type=tel]:focus, [type=email]:focus {
+    outline: none;
+  }
+
+  /* Stile per i campi del form quando sono validi */
   input[type=text]:valid, [type=tel]:valid, [type=email]:valid {
     outline: none;
     border-color: var(--accent);
