@@ -17,6 +17,9 @@
   </head>
 
   <body>
+    
+    <!-- Banner EVDrive in cima alla pagina -->
+    <div class="banner">EVDrive</div>
 
     <!-- Contenitore principale che racchiude il calendario e il form di prenotazione -->
     <div class="container">
@@ -72,8 +75,8 @@
             <!-- Form di prenotazione con metodo POST per inviare i dati -->
             <form action="/write_database" method="POST" id="userinfo">
 
-              <!-- Campo per il nome e cognome -->
-              <label for="nome">Nome e cognome:</label><br>
+              <!-- Campo per il nome -->
+              <label for="nome">Nome:</label><br>
               <input type="text" id="name" name="nome" required><br>
 
               <!-- Campo per il numero di telefono -->
